@@ -1,0 +1,52 @@
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+
+
+{% load staticfiles %}
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<div data-role="page">
+	<div data-role="header">
+	<h1>List Detail View: {{vlist.name}}</h1>
+</div>
+
+
+
+<div data-role="main" class="ui-content">
+	<fieldset data-role="controlgroup">
+		{% for choice in vlist.choice_set.all %}
+		<label for="{{ choice.id }}">{{ choice.choice_text }}</label>
+		<input type="checkbox" 
+			name="{{ choice.id }}" 
+			id="{{ choice.id}}" 
+			value="{{ choice.id }}"
+			{% if choice.isChecked %}
+				checked
+			{% endif %}
+		>
+		{% endfor %}
+	</fieldset>
+</div>
+
+<input type="text" id="tb1"/>
+
+<div data-role="footer">
+	<a href="{% url 'index' %}" class="ui-btn ui-btn-inline ui-corner-all">Back</a>
+</div>
+
+
+
+
+
+
+<script>
+	$('input').change(function() {
+		$.post("{% url 'detail' vlist.id %}", { choiceid: this.id, choicechecked: this.checked, 'csrfmiddlewaretoken': '{{ csrf_token }}'});
+	});
+</script>

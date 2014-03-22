@@ -1,0 +1,34 @@
+{% load staticfiles %}
+
+
+<html>
+<body>
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'alpha/style.css' %}" /> -->
+
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<div data-role="header">
+<h1>Main Index Page</h1>
+</div>
+
+<div data-role="controlgroup" class="ui content" style="text-align: left;">
+	<center><h2>Most Recent</h2></center>
+	{% if recent_lists %}
+		{% for list in recent_lists %}
+		<a href="{% url 'detail' list.id %}" class="ui-btn ui-corner-all">{{ list.name }}</a>
+		{% endfor %}
+	{% else %}
+		<p>NO LISTS</p>
+	{% endif %}
+</div>
+
+
+<a href="{% url 'listcreator' %}" class="ui-btn ui-corner-all ui-btn-b" data-theme="a">List Creator</a>
+
+</body>
+</html>

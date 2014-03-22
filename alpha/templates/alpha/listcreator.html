@@ -1,0 +1,39 @@
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% load staticfiles %}
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+
+<div data-role="page">
+  <div data-role="header">
+  <h1>Checklist Maker</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <form method="post" action="{% url 'handle_post' %}">
+		{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+		{% csrf_token %}
+		<fieldset data-role="controlgroup">
+			<legend>Checklist type?</legend>
+			<label for="alpha">Alpha</label>
+			<input type="radio" name="listtype" id="alpha" value="alpha">
+			<label for="beta">Beta</label>
+			<input type="radio" name="listtype" id="beta" value="beta">	
+			<label for="gamma">Gamma</label>
+			<input type="radio" name="listtype" id="gamma" value="gamma">	
+
+		</fieldset>
+		
+		<fieldset data-role="controlgroup2">
+			<legend>Are you sure you want to create a new checklist?</legend>
+			<label for="yes">Yes</label>
+			<input type = "checkbox" name="confirmation" id="yes" value="yes">
+		</fieldset>
+
+
+		<input type="submit" data-inline="true" value="Submit">
+	</form>
+</div>
+</div>
