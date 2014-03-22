@@ -1,0 +1,68 @@
+<html>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% load staticfiles %}
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static "beta/beta-theme.min.css" %}" />
+	<link rel="stylesheet" href="{% static "beta/jquery.mobile.icons.min.css" %}" />
+	<link rel="stylesheet" href="{% static "beta/jquery.mobile.structure-1.4.2.min.css" %}" />
+	<script src="{% static "beta/jquery-1.11.0.min.js" %}"></script>
+	<script src="{% static "beta/jquery.mobile-1.4.2.min.js" %}"></script>
+</head>
+
+<body>
+<div data-role="page">
+	<div data-role="header" data-position="fixed">
+	<h3 style="text-align:left; margin-left:10px;">{{vlist.name}}</h3>
+	<a href="javascript:history.go(0)" class="ui-btn-right" data-theme="b" data-icon="refresh">Refresh</a>
+</div>
+
+<div data-role="main" class="ui-content">
+	<div data-role="collapsible-set">
+
+		{% for group in vlist.choicegroup_set.all %}	
+
+			<div data-role="collapsible" 
+				data-collapsed="true" 
+				data-theme="{{ group.get_swatch }}"
+				> 
+
+				<h1>{{group.group_text}}</h1>
+				<fieldset data-role="controlgroup">
+				<h3>{{group.subtext}}</h3>
+				{% for choice in group.choice_set.all %}
+					<label for="{{ choice.id }}">{{ choice.choice_text | linebreaksbr }}<br><i>{{ choice.last_user }} - {{ choice.last_date }}</i></label>
+					<input type="checkbox" 
+						name="{{ choice.id }}" 
+						id="{{ choice.id}}" 
+						value="{{ choice.id }}"
+						data-theme="a"
+						{% if choice.isChecked %}
+							checked
+						{% endif %}
+					>
+				{% endfor %}
+				</fieldset>
+			</div>
+		{% endfor %}
+
+	</div>
+</div>
+
+
+<div data-role="footer">
+	<a href="{% url 'index' %}" class="ui-btn ui-btn-inline ui-corner-all">Back</a>
+</div>
+
+
+
+
+
+<script>
+	$('input').change(function() {
+		$.post("{% url 'detail' vlist.id %}", { 'username': '{{user.username}}', choiceid: this.id, choicechecked: this.checked, 'csrfmiddlewaretoken': '{{ csrf_token }}'});
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+<head>
+	{% load staticfiles %}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static "beta/beta-theme.min.css" %}" />
+	<link rel="stylesheet" href="{% static "beta/jquery.mobile.icons.min.css" %}" />
+	<link rel="stylesheet" href="{% static "beta/jquery.mobile.structure-1.4.2.min.css" %}" />
+	<script src="{% static "beta/jquery-1.11.0.min.js" %}"></script>
+	<script src="{% static "beta/jquery.mobile-1.4.2.min.js" %}"></script>
+</head>
+<body>
+
+<div data-role="page">
+  <div data-role="header">
+	  <h1>Checklist Maker</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <form method="post" action="{% url 'handle_post' %}">
+		{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+		{% csrf_token %}
+		<fieldset data-role="controlgroup">
+			<legend>Checklist type?</legend>
+			<label for="alpha">Alpha</label>
+			<input type="radio" name="listtype" id="alpha" value="alpha">
+			<label for="startofnight">Start-of-Night Checklist</label>
+			<input type="radio" name="listtype" id="startofnight" value="Start-of-Night">	
+			<label for="endofnight">End-Of-Night Checklist</label>
+			<input type="radio" name="listtype" id="endofnight" value="End-of-Night">	
+
+		</fieldset>
+		
+		<fieldset data-role="controlgroup2">
+			<legend>Are you sure you want to create a new checklist?</legend>
+			<label for="yes">Yes (This can take up to 20 seconds)</label>
+			<input type = "checkbox" name="confirmation" id="yes" value="yes">
+		</fieldset>
+
+
+		<input type="submit" data-inline="true" value="Submit">
+	</form>
+	</div>
+</div>
+
+<div data-role="footer">
+	<a href="{% url 'index' %}" class="ui-btn ui-btn-inline ui-corner-all">Back</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,66 @@
+<html>
+<head>
+	{% load staticfiles %}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static "beta/beta-theme.min.css" %}" />
+	<link rel="stylesheet" href="{% static "beta/jquery.mobile.icons.min.css" %}" />
+	<link rel="stylesheet" href="{% static "beta/jquery.mobile.structure-1.4.2.min.css" %}" />
+	<script src="{% static "beta/jquery-1.11.0.min.js" %}"></script>
+	<script src="{% static "beta/jquery.mobile-1.4.2.min.js" %}"></script>
+</head>
+
+<style type="text/css">
+.ui-page {
+/*	 background:url({% static "beta/veritas-background.jpg"%}) no-repeat center center fixed;
+	 -webkit-background-size: cover;
+	 -moz-background-size: cover;
+	 -o-background-size: cover;
+	 background-size: cover;
+*/
+	background-color: #d9f2ff
+ }
+
+ </style>
+
+
+
+
+
+
+
+<body>
+<div data-role="header">
+<h1>Main Index Page</h1>
+</div>
+
+<div data-role="controlgroup" class="ui content" style="text-align: left;">
+	<center><h2>Most Recent</h2></center>
+	{% if recent_lists %}
+		{% for list in recent_lists %}
+		<a href="{% url 'detail' list.id %}" class="ui-btn ui-corner-all">{{ list.name }}</a>
+		{% endfor %}
+	{% else %}
+		<p>NO LISTS</p>
+	{% endif %}
+</div>
+
+
+<a href="{% url 'listcreator' %}" class="ui-btn ui-corner-all ui-btn-b" >List Creator</a>
+<div data-role="collapsible" data-collapsed="true">
+	<h1>Older Lists</h1>
+	{% if older_lists %}
+	{% for list in older_lists %}
+		<a href="{% url 'detail' list.id %}" class="ui-btn ui-corner-all">{{ list.name }}</a>
+		{% endfor %}
+	{% else %}
+		<p>NO LISTS</p>
+	{% endif %}
+</div>
+
+<div data-role="footer">
+	<a href="{% url 'index' %}" class="ui-btn ui-btn-inline ui-corner-all">Back</a>
+	<a href="{% url 'logout' %}" class="ui-btn ui-btn-inline ui-corner-all">Log out</a>
+
+</div>
+</body>
+</html>
