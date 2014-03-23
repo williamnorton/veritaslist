@@ -1,0 +1,62 @@
+<html>
+<head>
+	<!--
+	{% load staticfiles %}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static "beta/beta-theme.min.css" %}" />
+	<link rel="stylesheet" href="{% static "beta/jquery.mobile.icons.min.css" %}" />
+	<link rel="stylesheet" href="{% static "beta/jquery.mobile.structure-1.4.2.min.css" %}" />
+	<script src="{% static "beta/jquery-1.11.0.min.js" %}"></script>
+	<script src="{% static "beta/jquery.mobile-1.4.2.min.js" %}"></script>
+	-->
+	<style>
+		table,tr,td,th{
+			border:1px solid black;
+			width:900px;
+			border-collapse: collapse;
+			
+			page-break-inside: avoid;
+			}
+
+	</style>
+
+</head>
+<body>
+	<!--
+	<div data-role="header">
+		<h1>Logout Page</h1>
+	</div>
+	-->
+	<div data-enhancement="False">
+		{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+
+	<h1>{{ vlist.name }}</h1>
+	<b>Observers</b>: {{vlist.observers_list}}
+	<br>
+	<b>Date</b>: {{vlist.pub_date}}
+	<br><br><br>
+	<b>Czar's Signiture:</b>___________________________________________________________
+	<br><br>
+	
+	{% for group in vlist.choicegroup_set.all %}
+		<table>
+			<tr>
+				<td colspan="2"><b>{{group.group_text}}</b></td>
+			</tr>
+			{% for choice in group.choice_set.all %}
+			<tr >
+				<td><div style="width: 800px">{{choice.choice_text}}</div></td>
+				<td><div style="width: 100px">{{choice.last_user}}<br>{{choice.last_date}}</div></td>
+			</tr>
+			{% endfor %}
+		</table>
+		<br>
+	{% endfor %}
+	
+	
+	
+</div>
+</body>
+</html>
+

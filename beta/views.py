@@ -96,6 +96,9 @@ def logout_view(request):
 	logout(request)
 	return render(request, 'beta/logout.html', {'filler': "Logout page"})
 
+def print_friendly(request, list_id):
+	return render(request, 'beta/print_friendly.html', {'vlist': List.objects.get(id=list_id)})
+
 def populate_list(vlist):
 	if vlist.name.startswith("End"):
 		vlist.display_name="End-of-Night"+": "+str(strftime("%a, %B %d, at %H:%M",localtime()))

@@ -52,7 +52,8 @@
 
 
 <div data-role="footer">
-	<a href="{% url 'index' %}" class="ui-btn ui-btn-inline ui-corner-all">Back</a>
+	<a href="{% url 'index' %}" class="ui-btn-left" data-icon="Home">Back</a>
+	<a href="{% url 'print_friendly' vlist.id %}" class="ui-btn-right" data-theme="b" data-icon="bullets">Print Friendly</a>
 </div>
 
 

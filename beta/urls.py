@@ -12,6 +12,7 @@ urlpatterns = patterns('',
 	url(r'^handle_post/$', views.handle_post, name='handle_post'),
 	url(r'^success/$', views.success, name='success'),
 	url(r'^logout/$', views.logout_view, name='logout'),
-
+	
+	url(r'^(?P<list_id>\d+)/print_friendly/$', views.print_friendly, name='print_friendly'),
 	url(r'^(?P<list_id>\d+)/$', views.detail, name='detail'),
 )
