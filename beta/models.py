@@ -7,15 +7,12 @@ from django.utils import timezone
 
 class List(models.Model):
 	name = models.CharField(max_length=200)
-	display_name = models.CharField(max_length=30)
 	pub_date = models.DateTimeField('date published')
 	observers_list = models.CharField(max_length=60, default="")
 
 	def __unicode__(self):
 		return self.name
 
-	def is_recent(self):
-		return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
 class ChoiceGroup(models.Model):
 	parent = models.ForeignKey(List)
@@ -43,7 +40,6 @@ class Choice(models.Model):
 	parent = models.ForeignKey(ChoiceGroup)
 	choice_text = models.CharField(max_length=200)
 	isChecked = models.BooleanField(default=False)
-	order_number = models.IntegerField(default=0)
 	last_user = models.CharField(max_length=20, default="Nobody")
 	last_date = models.CharField(max_length=10, default=' ')
 	details = models.CharField(max_length=150, default='')
