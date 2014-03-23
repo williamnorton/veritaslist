@@ -207,7 +207,6 @@ def populate_list(vlist):
 			subtext="NO LATER THAN 90 MINUTES BEFORE STARTUP")
 		g.save()
 		g.choice_set.create(choice_text="Inspect around the base of each telescope for obstructions")	
-		g.choice_set.create(choice_text="For telescope 2 & 3, turn on the infrared radiometers")	
 		g.choice_set.create(choice_text="Check that the RUN/SAFE switch is at SAFE (down)")
 		g.choice_set.create(choice_text="Check that the lights inside the positioner pedestal are off")
 		g.choice_set.create(choice_text="Check that camera shutters are closed")
@@ -216,7 +215,8 @@ def populate_list(vlist):
 			subtext="NO LATER THAN 90 MINUTES BEFORE STARTUP")
 		g.save()
 		g.choice_set.create(choice_text="Inspect around the base of each telescope for obstructions")	
-		g.choice_set.create(choice_text="For telescope 2 & 3, turn on the infrared radiometers")	
+		g.choice_set.create(choice_text="For telescope 2 & 3, turn on the infrared radiometers",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Operating_the_infrared_radiometers')	
 		g.choice_set.create(choice_text="Check that the RUN/SAFE switch is at SAFE (down)")
 		g.choice_set.create(choice_text="Check that the lights inside the positioner pedestal are off")
 		g.choice_set.create(choice_text="Check that camera shutters are closed")
@@ -225,7 +225,8 @@ def populate_list(vlist):
 			subtext="NO LATER THAN 90 MINUTES BEFORE STARTUP")
 		g.save()
 		g.choice_set.create(choice_text="Inspect around the base of each telescope for obstructions")	
-		g.choice_set.create(choice_text="For telescope 2 & 3, turn on the infrared radiometers")	
+		g.choice_set.create(choice_text="For telescope 2 & 3, turn on the infrared radiometers",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Operating_the_infrared_radiometers')	
 		g.choice_set.create(choice_text="Check that the RUN/SAFE switch is at SAFE (down)")
 		g.choice_set.create(choice_text="Check that the lights inside the positioner pedestal are off")
 		g.choice_set.create(choice_text="Check that camera shutters are closed")
@@ -234,7 +235,6 @@ def populate_list(vlist):
 			subtext="NO LATER THAN 90 MINUTES BEFORE STARTUP")
 		g.save()
 		g.choice_set.create(choice_text="Inspect around the base of each telescope for obstructions")	
-		g.choice_set.create(choice_text="For telescope 2 & 3, turn on the infrared radiometers")	
 		g.choice_set.create(choice_text="Check that the RUN/SAFE switch is at SAFE (down)")
 		g.choice_set.create(choice_text="Check that the lights inside the positioner pedestal are off")
 		g.choice_set.create(choice_text="Check that camera shutters are closed")
@@ -245,27 +245,37 @@ def populate_list(vlist):
 		g.save()
 		g.choice_set.create(choice_text="Key on the HV supplies (2 crates) to LOCAL")
 		g.choice_set.create(choice_text="Check that the front and back FADC rack doors are latched closed")
-		g.choice_set.create(choice_text="Switch on the chiller - ENABLE system and ENABLE comp.")
-		g.choice_set.create(choice_text="Turn the trailer AC to 57 =C2=BAF")
-		g.choice_set.create(choice_text="Check that the dehumidifier is running")
+		g.choice_set.create(choice_text="Switch on the chiller - ENABLE system and ENABLE comp.",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Chiller')	
+		g.choice_set.create(choice_text="Turn the trailer AC to 57 =C2=BAF",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Trailer_Thermostat')	
+		g.choice_set.create(choice_text="Check that the dehumidifier is running",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Telescope_Dehumidifiers')	
 		g.choice_set.create(choice_text="Verify that the HV crates booted okay \n(display shows splash screen, +5V, +-12V, +48V LEDs lit)")
 		g = vlist.choicegroup_set.create(group_text="(T>90) Trailer 2",
 			subtext="NO LATER THAN 90 MINUTES BEFORE STARTUP")
 		g.save()
 		g.choice_set.create(choice_text="Key on the HV supplies (2 crates) to LOCAL")
 		g.choice_set.create(choice_text="Check that the front and back FADC rack doors are latched closed")
-		g.choice_set.create(choice_text="Switch on the chiller - ENABLE system and ENABLE comp.")
-		g.choice_set.create(choice_text="Turn the trailer AC to 57 =C2=BAF")
-		g.choice_set.create(choice_text="Check that the dehumidifier is running")
+		g.choice_set.create(choice_text="Switch on the chiller - ENABLE system and ENABLE comp.",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Chiller')	
+		g.choice_set.create(choice_text="Turn the trailer AC to 57 =C2=BAF",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Trailer_Thermostat')	
+
+		g.choice_set.create(choice_text="Check that the dehumidifier is running",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Telescope_Dehumidifiers')	
 		g.choice_set.create(choice_text="Verify that the HV crates booted okay \n(display shows splash screen, +5V, +-12V, +48V LEDs lit)")
 		g = vlist.choicegroup_set.create(group_text="(T>90) Trailer 3",
 			subtext="NO LATER THAN 90 MINUTES BEFORE STARTUP")
 		g.save()
 		g.choice_set.create(choice_text="Key on the HV supplies (2 crates) to LOCAL")
 		g.choice_set.create(choice_text="Check that the front and back FADC rack doors are latched closed")
-		g.choice_set.create(choice_text="Switch on the chiller - ENABLE system and ENABLE comp.")
-		g.choice_set.create(choice_text="Turn the trailer AC to 57 =C2=BAF")
-		g.choice_set.create(choice_text="Check that the dehumidifier is running")
+		g.choice_set.create(choice_text="Switch on the chiller - ENABLE system and ENABLE comp.",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Chiller')	
+		g.choice_set.create(choice_text="Turn the trailer AC to 57 =C2=BAF",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Trailer_Thermostat')	
+		g.choice_set.create(choice_text="Check that the dehumidifier is running",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Telescope_Dehumidifiers')	
 		g.choice_set.create(choice_text="Verify that the HV crates booted okay \n(display shows splash screen, +5V, +-12V, +48V LEDs lit)")
 
 		g = vlist.choicegroup_set.create(group_text="(T>90) Trailer 4",
@@ -273,9 +283,12 @@ def populate_list(vlist):
 		g.save()
 		g.choice_set.create(choice_text="Key on the HV supplies (2 crates) to LOCAL")
 		g.choice_set.create(choice_text="Check that the front and back FADC rack doors are latched closed")
-		g.choice_set.create(choice_text="Switch on the chiller - ENABLE system and ENABLE comp.")
-		g.choice_set.create(choice_text="Turn the trailer AC to 57 =C2=BAF")
-		g.choice_set.create(choice_text="Check that the dehumidifier is running")
+		g.choice_set.create(choice_text="Switch on the chiller - ENABLE system and ENABLE comp.",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Chiller')	
+		g.choice_set.create(choice_text="Turn the trailer AC to 57 =C2=BAF",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Trailer_Thermostat')	
+		g.choice_set.create(choice_text="Check that the dehumidifier is running",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Telescope_Dehumidifiers')	
 		g.choice_set.create(choice_text="Verify that the HV crates booted okay \n(display shows splash screen, +5V, +-12V, +48V LEDs lit)")
 
 
@@ -293,7 +306,8 @@ def populate_list(vlist):
 			subtext="NO LATER THAN 90 MINUTES BEFORE STARTUP")
 		g.save()
 		g.choice_set.create(choice_text="Remove the cap from the infrared radiometer (on staircase)")
-		g.choice_set.create(choice_text="Turn on the radiometer - switch on power strip in box on staircase")
+		g.choice_set.create(choice_text="Turn on the radiometer - switch on power strip in box on staircase",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Operating_the_infrared_radiometers')	
 
 		g = vlist.choicegroup_set.create(group_text="(T>90) Main Building",
 			subtext="NO LATER THAN 90 MINUTES BEFORE STARTUP")
@@ -304,37 +318,53 @@ def populate_list(vlist):
 		g = vlist.choicegroup_set.create(group_text="(T>90) Control Room",
 			subtext="NO LATER THAN 90 MINUTES BEFORE STARTUP")
 		g.save()
-		g.choice_set.create(choice_text="Turn on all camera fans: on arrayctl: start_camera_fan -a")
-		g.choice_set.create(choice_text="Check that the CFD thresholds and Lookback Times are correct:\b ssh vdaq@dacq.t1	\n> vdbget_CFDSettings -t# (where #=3D1,2,3,4) threshold should be ~45mV,\n> vdbget_FADCChanSettings -t# (where #=3D1,2,3,4) lookback time should be 3000 samples")
-		g.choice_set.create(choice_text="All observers should review the observing protocol for GRBs and the behavior of the GRB popup GUI, if they have not done so already this dark run. \nStart the errorArchivingDemon in a new terminal, and leave it running all night \n$ ssh harvester; ./errorArchivingDemon.run.sh")
+		g.choice_set.create(choice_text="Turn on all camera fans: on arrayctl: start_camera_fan -a",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Camera_Fan')	
+		g.choice_set.create(choice_text="Check that the CFD thresholds and Lookback Times are correct:\b ssh vdaq@dacq.t1	\n> vdbget_CFDSettings -t# (where #=3D1,2,3,4) threshold should be ~45mV,\n> vdbget_FADCChanSettings -t# (where #=3D1,2,3,4) lookback time should be 3000 samples",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Verifty_FADC_Settings')
+		g.choice_set.create(choice_text="All observers should review the observing protocol for GRBs and the behavior of the GRB popup GUI, if they have not done so already this dark run. \nStart the errorArchivingDemon in a new terminal, and leave it running all night \n$ ssh harvester; ./errorArchivingDemon.run.sh",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Gamma-Ray_Burst_Alerts#The_GRB_Wizard_.28popup.29')
 
 
 		g = vlist.choicegroup_set.create(group_text="(T>75) Control Room: Control02 Computer",
 			subtext="NO LATER THAN 75 MINUTES BEFORE STARTUP")
 		g.save()
-		g.choice_set.create(choice_text="On control02 check that ReadTemps is running on all four telescopes by opening readtemps desktop, and if necessary clicking on RT Icon \n(or Log into arrayctl and launch FADC temperature monitors: ssh arrayctl, startReadTemps.pl -1234)")
+		g.choice_set.create(choice_text="On control02 check that ReadTemps is running on all four telescopes by opening readtemps desktop, and if necessary clicking on RT Icon \n(or Log into arrayctl and launch FADC temperature monitors: ssh arrayctl, startReadTemps.pl -1234)",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/FADC_Temperature_Monitor')
 		g.choice_set.create(choice_text="On control02 launch the array monitor http://arraymon.vts (bookmarked as VTSSlowCtl)")
-		g.choice_set.create(choice_text="On control02 (right desktop) launch DACQ.\n(This turns on the FADCs, so Chillers must be on first)\nssh to arrayctl.vts, ex. =E2=80=9CstartVDAQ.pl -1234=E2=80=9D")
+		g.choice_set.create(choice_text="On control02 (right desktop) launch DACQ.\n(This turns on the FADCs, so Chillers must be on first)\nssh to arrayctl.vts, ex. =E2=80=9CstartVDAQ.pl -1234=E2=80=9D",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#startVDAQ.pl')
 
-		g.choice_set.create(choice_text="On control02 execute =E2=80=9Cgrb_play=E2=80=9D to test that the GRB alert sound is working")
+
+		g.choice_set.create(choice_text="On control02 execute =E2=80=9Cgrb_play=E2=80=9D to test that the GRB alert sound is working",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Gamma-Ray_Burst_Alerts#testing_the_alert_sound')
+			
 
 		g = vlist.choicegroup_set.create(group_text="(T>75) Control Room: Control03 Computer",
 			subtext="NO LATER THAN 75 MINUTES BEFORE STARTUP")
 		g.save()
-		g.choice_set.create(choice_text="On control03 launch Tracking: click Trk Icon\n(or ex. =E2=80=9CstartTRK.pl =E2=80=93a=E2=80=9D),\ncheck to see that telescopes are in Array Mode.")
-		g.choice_set.create(choice_text="On control03 launch VAC: (JAN 2014: ssh to arrayctl.vts, ex. =E2=80=9C VAC &=E2=80=9D)")
-		g.choice_set.create(choice_text="Check for recent GRB alerts on the GRB panel of array_tracking")
-		g.choice_set.create(choice_text="Check the highest energy Fermi photon to determine if data is to be taken for the photon during the night")
+		g.choice_set.create(choice_text="On control03 launch Tracking: click Trk Icon\n(or ex. =E2=80=9CstartTRK.pl =E2=80=93a=E2=80=9D),\ncheck to see that telescopes are in Array Mode.",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Serial_Tracking(PCS)#Array_interface')
+		g.choice_set.create(choice_text="On control03 launch VAC: (JAN 2014: ssh to arrayctl.vts, ex. =E2=80=9C VAC &=E2=80=9D)",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_VAC_.28VERITAS_Array_Control.29')
+		g.choice_set.create(choice_text="Check for recent GRB alerts on the GRB panel of array_tracking",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Checking_GRB_Alert_Software')
+		g.choice_set.create(choice_text="Check the highest energy Fermi photon to determine if data is to be taken for the photon during the night",
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#High_Energy_Fermi_Photon')
 		g.choice_set.create(choice_text="After a few minutes check VAC to see that event builders are connected")
 		g.choice_set.create(choice_text="In VAC, select Observer->Start Night")
-		g.choice_set.create(choice_text="Check that VAC has connected to harvester, database and L3. L3 should be in the initialized state.")
-		g.choice_set.create(choice_text='Check that sufficient disk space is free\nIn VAC: - Observer->Check Free Disk Space\nIn a terminal check UCLA raid space (>250GB):\n"$ ssh archiver@archive diskfree" (all one command)')
+		g.choice_set.create(choice_text='Check that VAC has connected to harvester, database and L3. L3 should be in the initialized state.\n<a href="https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_L3">Starting L3</a>',
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Checking_Harvester')
+		g.choice_set.create(choice_text='Check that sufficient disk space is free\nIn VAC: - Observer->Check Free Disk Space\nIn a terminal check UCLA raid space (>250GB):\n"$ ssh archiver@archive diskfree" (all one command)',
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Disk_Space')
 
 		g = vlist.choicegroup_set.create(group_text="(T>75) Control Room: Control01 Computer",
 			subtext="NO LATER THAN 75 MINUTES BEFORE STARTUP")
 		g.save()
-		g.choice_set.create(choice_text='On control01 launch the Infrared Radiometers: click on the FIR Icon\n(or ex. =E2=80=9CRUNFIR &=E2=80=9D); WAIT a minute for windows to appear')
-		g.choice_set.create(choice_text='On control01 launch the All-Sky Cloud Monitor by clicking the All-Seeing Eye Icon\n(or execute, "vncviewer 10.0.0.143")\nClick on "Start Video", set an exposure time of ~10 sec.')
+		g.choice_set.create(choice_text='On control01 launch the Infrared Radiometers: click on the FIR Icon\n(or ex. =E2=80=9CRUNFIR &=E2=80=9D); WAIT a minute for windows to appear.',
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Operating_the_infrared_radiometers')
+		g.choice_set.create(choice_text='On control01 launch the All-Sky Cloud Monitor by clicking the All-Seeing Eye Icon\n(or execute, "vncviewer 10.0.0.143")\nClick on "Start Video", set an exposure time of ~10 sec.',
+			details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Allsky_Cloud_Monitor')
 		g.choice_set.create(choice_text='On control01 launch the lidar http://lidar.vts (bookmarked).\nRight click on tab, "Reload Every" -> "Enable" and choose appropriate time interval.')
 
 		g = vlist.choicegroup_set.create(group_text="(T>75) Control Room: L2 Trigger GUI",
@@ -345,93 +375,120 @@ def populate_list(vlist):
 		g.choice_set.create(choice_text='In the "Configuration" tab of the GUI, check that all pixels in each telescope are either inverted and enabled or un-inverted and disabled.\nThis can be done by clicking the "Refresh All Pixels" button.\nAll pixels should be either green or black.\nThere should be NO blue pixels')
 		g.choice_set.create(choice_text='Check that there are no stuck on pixels by clicking the "Check for triggered/stuck pixels" button in the "Configuration" tab. Any pixels that show up as red should be disabled and un-inverted.\nNote: If the FADCs are not powered on, all pixels will appear red.')
 		g.choice_set.create(choice_text='In the "Configuration" tab check that the detune is on(green color on the circular mark besides of on/off button), and the L2 Output width is set to 5.')
-		g.choice_set.create(choice_text='In the "Monitoring" tab, from the "All" view, click the "Read Timing Alignment Info" button.\n\nView the delay settings for each telescope by selecting "Delays" in the drop-down menu.\n\nEnsure that delays are loaded (i.e., the pixels have non-zero delay values.) for each telescope.  For more information on verifying the timing alignments are loaded properly, see: http://veritas.sao.arizona.edu/wiki/index.php/ANL/ISU_L2#Verifying_a_Timing_Alignment_Is_Loaded')
+		g.choice_set.create(choice_text='In the "Monitoring" tab, from the "All" view, click the "Read Timing Alignment Info" button.\n\nView the delay settings for each telescope by selecting "Delays" in the drop-down menu.\n\nEnsure that delays are loaded (i.e., the pixels have non-zero delay values.) for each telescope.  For more information on verifying the timing alignments are loaded properly, see: details', 
+			details='http://veritas.sao.arizona.edu/wiki/index.php/ANL/ISU_L2#Verifying_a_Timing_Alignment_Is_Loaded')
 
 		g = vlist.choicegroup_set.create(group_text="(T>45) Inside trailer 1",
 			subtext='NO LATER THAN 45 MINUTES BEFORE STARTUP.')
 		g.save()
-		g.choice_set.create(choice_text='Turn the preamps ON. Verify that they are delivering ~350W')
+		g.choice_set.create(choice_text='Turn the preamps ON. Verify that they are delivering ~350W',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Current_Monitor')
+
 		g = vlist.choicegroup_set.create(group_text="(T>45) Inside trailer 2",
 			subtext='NO LATER THAN 45 MINUTES BEFORE STARTUP.')
 		g.save()
-		g.choice_set.create(choice_text='Turn the preamps ON. Verify that they are delivering ~350W')
+		g.choice_set.create(choice_text='Turn the preamps ON. Verify that they are delivering ~350W',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Current_Monitor')
+
 		g = vlist.choicegroup_set.create(group_text="(T>45) Inside trailer 3",
 			subtext='NO LATER THAN 45 MINUTES BEFORE STARTUP.')
 		g.save()
-		g.choice_set.create(choice_text='Turn the preamps ON. Verify that they are delivering ~350W')
+		g.choice_set.create(choice_text='Turn the preamps ON. Verify that they are delivering ~350W',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Current_Monitor')
+
 		g = vlist.choicegroup_set.create(group_text="(T>45) Inside trailer 4",
 			subtext='NO LATER THAN 45 MINUTES BEFORE STARTUP.')
 		g.save()
-		g.choice_set.create(choice_text='Turn the preamps ON. Verify that they are delivering ~350W')
+		g.choice_set.create(choice_text='Turn the preamps ON. Verify that they are delivering ~350W',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Current_Monitor')
+
 
 		g = vlist.choicegroup_set.create(group_text="(T>45) Control Room",
 			subtext='NO LATER THAN 45 MINUTES BEFORE STARTUP.')
 		g.save()
-		g.choice_set.create(choice_text='On control03 launch Current Monitor: click on the IMon Icon (or =E2=80=9CstartIMon.pl -1234=E2=80=9D)')
-		g.choice_set.create(choice_text='On control03 launch HV: click HV Icon\n(or execute =E2=80=9CstartHV.pl -1234a=E2=80=9D)')
+		g.choice_set.create(choice_text='On control03 launch Current Monitor: click on the IMon Icon (or =E2=80=9CstartIMon.pl -1234=E2=80=9D)',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Current_Monitor')
+		g.choice_set.create(choice_text='On control03 launch HV: click HV Icon\n(or execute =E2=80=9CstartHV.pl -1234a=E2=80=9D)',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_High_Voltage')
 		g.choice_set.create(choice_text='Turn the HV on (PMT->All On), current monitors should read ~0.')
 		g.choice_set.create(choice_text='Take a 2-minute fake flasher run:')
 		g.choice_set.create(choice_text='Start the flasher \n( $ ssh arrayctl ; $ flasher )')
 		g.choice_set.create(choice_text='Start a standard flasher run in VAC and make sure all sub-systems are working fine')
 		g.choice_set.create(choice_text='Monitor the data being taken with quicklook ssh harvester, then run "ql_monitor".')
-		g.choice_set.create(choice_text='If there is a Star Party or other activity outside the gate, read Overview of Observing. Talk to people/hand out flyers if necessary.')
+		g.choice_set.create(choice_text='If there is a Star Party or other activity outside the gate, read Overview of Observing. Talk to people/hand out flyers if necessary.\n<a href="https://veritas.sao.arizona.edu/wiki/images/f/fb/Night-flyer.pdf">Flyer</a>',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Overview_of_Observing')
 
-		g = vlist.choicegroup_set.create(group_text="(T>45) Control Room",
-			subtext='NO LATER THAN 45 MINUTES BEFORE STARTUP.')
+		g = vlist.choicegroup_set.create(group_text="(T>20) Control Room",
+			subtext='NO LATER THAN 20 MINUTES BEFORE STARTUP.')
 		g.save()
 		g.choice_set.create(choice_text='On control03 turn off HV')
-		g.choice_set.create(choice_text='On control02 launch Pointing Monitor control: in VPM Control desktop click Vpm\n(or ssh in control04 and execute =E2=80=9Cvpmctl=E2=80=9D).\nPower on and start all monitors.')
-		g.choice_set.create(choice_text='Start the ELog in your favorite text editor')
+		g.choice_set.create(choice_text='On control02 launch Pointing Monitor control: in VPM Control desktop click Vpm\n(or ssh in control04 and execute =E2=80=9Cvpmctl=E2=80=9D).\nPower on and start all monitors.',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Pointing_Monitor#Using_the_Pointing_Monitors_during_gamma-ray_observations')
+		g.choice_set.create(choice_text='Start the ELog in your favorite text editor',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_the_ELOG')
 
-		g = vlist.choicegroup_set.create(group_text="(T>45) Telescope 1",
-			subtext='NO LATER THAN 45 MINUTES BEFORE STARTUP.')
+		g = vlist.choicegroup_set.create(group_text="(T>20) Telescope 1",
+			subtext='NO LATER THAN 20 MINUTES BEFORE STARTUP.')
 		g.save()
-		g.choice_set.create(choice_text='Check that lights on QI power supplies are off (switch should be kept ON)')
+		g.choice_set.create(choice_text='Check that lights on QI power supplies are off (switch should be kept ON)',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_that_QI_is_Off')
 		g.choice_set.create(choice_text='Check that the red light on the fan power supply is on.')
-		g.choice_set.create(choice_text='Turn on shutter power and open the shutter using the remote control')
+		g.choice_set.create(choice_text='Turn on shutter power and open the shutter using the remote control',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Opening_Shutter')
 		g.choice_set.create(choice_text='Replace the remote control and switch off shutter power')
 		g.choice_set.create(choice_text='Turn off all the lights in the trailer')
 		g.choice_set.create(choice_text='Check that internal door is closed')
-		g.choice_set.create(choice_text='Flip the RUN/SAFE switch on positioner to =E2=80=9CRUN=E2=80=9D')
+		g.choice_set.create(choice_text='Flip the RUN/SAFE switch on positioner to =E2=80=9CRUN=E2=80=9D',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Tracking')
 
 
-		g = vlist.choicegroup_set.create(group_text="(T>45) Telescope 2",
-			subtext='NO LATER THAN 45 MINUTES BEFORE STARTUP.')
+		g = vlist.choicegroup_set.create(group_text="(T>20) Telescope 2",
+			subtext='NO LATER THAN 20 MINUTES BEFORE STARTUP.')
 		g.save()
-		g.choice_set.create(choice_text='Check that lights on QI power supplies are off (switch should be kept ON)')
+		g.choice_set.create(choice_text='Check that lights on QI power supplies are off (switch should be kept ON)',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_that_QI_is_Off')
 		g.choice_set.create(choice_text='Check that the red light on the fan power supply is on.')
-		g.choice_set.create(choice_text='Turn on shutter power and open the shutter using the remote control')
+		g.choice_set.create(choice_text='Turn on shutter power and open the shutter using the remote control',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Opening_Shutter')
 		g.choice_set.create(choice_text='Replace the remote control and switch off shutter power')
 		g.choice_set.create(choice_text='Turn off all the lights in the trailer')
 		g.choice_set.create(choice_text='Check that internal door is closed')
-		g.choice_set.create(choice_text='Flip the RUN/SAFE switch on positioner to =E2=80=9CRUN=E2=80=9D')
+		g.choice_set.create(choice_text='Flip the RUN/SAFE switch on positioner to =E2=80=9CRUN=E2=80=9D',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Tracking')
 		
-		g = vlist.choicegroup_set.create(group_text="(T>45) Telescope 3",
-			subtext='NO LATER THAN 45 MINUTES BEFORE STARTUP.')
+		g = vlist.choicegroup_set.create(group_text="(T>20) Telescope 3",
+			subtext='NO LATER THAN 20 MINUTES BEFORE STARTUP.')
 		g.save()
-		g.choice_set.create(choice_text='Check that lights on QI power supplies are off (switch should be kept ON)')
+		g.choice_set.create(choice_text='Check that lights on QI power supplies are off (switch should be kept ON)',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_that_QI_is_Off')
 		g.choice_set.create(choice_text='Check that the red light on the fan power supply is on.')
-		g.choice_set.create(choice_text='Turn on shutter power and open the shutter using the remote control')
+		g.choice_set.create(choice_text='Turn on shutter power and open the shutter using the remote control',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Opening_Shutter')
 		g.choice_set.create(choice_text='Replace the remote control and switch off shutter power')
 		g.choice_set.create(choice_text='Turn off all the lights in the trailer')
 		g.choice_set.create(choice_text='Check that internal door is closed')
-		g.choice_set.create(choice_text='Flip the RUN/SAFE switch on positioner to =E2=80=9CRUN=E2=80=9D')
+		g.choice_set.create(choice_text='Flip the RUN/SAFE switch on positioner to =E2=80=9CRUN=E2=80=9D',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Tracking')
 
-		g = vlist.choicegroup_set.create(group_text="(T>45) Telescope 4",
-			subtext='NO LATER THAN 45 MINUTES BEFORE STARTUP.')
+		g = vlist.choicegroup_set.create(group_text="(T>20) Telescope 4",
+			subtext='NO LATER THAN 20 MINUTES BEFORE STARTUP.')
 		g.save()
-		g.choice_set.create(choice_text='Check that lights on QI power supplies are off (switch should be kept ON)')
+		g.choice_set.create(choice_text='Check that lights on QI power supplies are off (switch should be kept ON)',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_that_QI_is_Off')
 		g.choice_set.create(choice_text='Check that the red light on the fan power supply is on.')
-		g.choice_set.create(choice_text='Turn on shutter power and open the shutter using the remote control')
+		g.choice_set.create(choice_text='Turn on shutter power and open the shutter using the remote control',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Opening_Shutter')
 		g.choice_set.create(choice_text='Replace the remote control and switch off shutter power')
 		g.choice_set.create(choice_text='Turn off all the lights in the trailer')
 		g.choice_set.create(choice_text='Check that internal door is closed')
-		g.choice_set.create(choice_text='Flip the RUN/SAFE switch on positioner to =E2=80=9CRUN=E2=80=9D')
+		g.choice_set.create(choice_text='Flip the RUN/SAFE switch on positioner to =E2=80=9CRUN=E2=80=9D',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Tracking')
 
-		g = vlist.choicegroup_set.create(group_text="(T>45) Allsky cloud monitor",
-			subtext='NO LATER THAN 45 MINUTES BEFORE STARTUP.')
+		g = vlist.choicegroup_set.create(group_text="(T>20) Allsky cloud monitor",
+			subtext='NO LATER THAN 20 MINUTES BEFORE STARTUP.')
 		g.save()
-		g.choice_set.create(choice_text='After sunset, open the cover for the allsky cloud monitor at T0')
+		g.choice_set.create(choice_text='After sunset, open the cover for the allsky cloud monitor at T0',
+			details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Allsky_Cloud_Monitor')
 
 		g = vlist.choicegroup_set.create(group_text="(T=0) Startup")
 		g.save()

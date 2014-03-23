@@ -32,7 +32,14 @@
 				<fieldset data-role="controlgroup">
 				<h3>{{group.subtext}}</h3>
 				{% for choice in group.choice_set.all %}
-					<label for="{{ choice.id }}">{{ choice.choice_text | linebreaksbr }}<br><i>{{ choice.last_user }} - {{ choice.last_date }}</i></label>
+					{% autoescape off %}
+					<label for="{{ choice.id }}">{{ choice.choice_text | linebreaksbr }}
+						{% if choice.details|length > 5 %}
+							<br><i><a href="{{choice.details}}" target="_blank">(details)</a></i>
+						{% endif %}
+						<br><i>{{ choice.last_user }} - {{ choice.last_date }}</i>	
+					</label>
+					{% endautoescape %}
 					<input type="checkbox" 
 						name="{{ choice.id }}" 
 						id="{{ choice.id}}" 

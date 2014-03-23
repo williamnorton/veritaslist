@@ -46,7 +46,7 @@ class Choice(models.Model):
 	order_number = models.IntegerField(default=0)
 	last_user = models.CharField(max_length=20, default="Nobody")
 	last_date = models.CharField(max_length=10, default=' ')
-	
-	#details = models.CharField(max_length=150, default='')
+	details = models.CharField(max_length=150, default='')
+
 	def __unicode__(self):
 		return self.choice_text

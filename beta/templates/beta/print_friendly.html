@@ -9,6 +9,9 @@
 	<script src="{% static "beta/jquery-1.11.0.min.js" %}"></script>
 	<script src="{% static "beta/jquery.mobile-1.4.2.min.js" %}"></script>
 	-->
+	<script>
+		$.mobile.ignoreContentEnabled = true
+	</script>
 	<style>
 		table,tr,td,th{
 			border:1px solid black;
@@ -27,7 +30,7 @@
 		<h1>Logout Page</h1>
 	</div>
 	-->
-	<div data-enhancement="False">
+	<div class="content" data-enhancement="False">
 		{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 
@@ -36,7 +39,7 @@
 	<br>
 	<b>Date</b>: {{vlist.pub_date}}
 	<br><br><br>
-	<b>Czar's Signiture:</b>___________________________________________________________
+	<b>Czar's Signature:</b>___________________________________________________________
 	<br><br>
 	
 	{% for group in vlist.choicegroup_set.all %}
