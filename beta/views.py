@@ -8,8 +8,8 @@ from time import localtime, strftime
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-import xml.etree.ElementTree as ET
-from xml.etree.ElementTree import ParseError
+import xml.etree.cElementTree as ET
+from xml.etree.cElementTree import ParseError
 
 
 # Create your views here.
