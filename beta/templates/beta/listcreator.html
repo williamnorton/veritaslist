@@ -20,13 +20,10 @@
 		{% csrf_token %}
 		<fieldset data-role="controlgroup">
 			<legend>Checklist type?</legend>
-			<label for="alpha">Alpha</label>
-			<input type="radio" name="listtype" id="alpha" value="alpha">
-			<label for="startofnight">Start-of-Night Checklist</label>
-			<input type="radio" name="listtype" id="startofnight" value="Start-of-Night">	
-			<label for="endofnight">End-Of-Night Checklist</label>
-			<input type="radio" name="listtype" id="endofnight" value="End-of-Night">	
-
+			{% for list in checklists %}
+			<label for='{{list}}'>{{list}}</label>
+			<input type="radio" name="listtype" id='{{list}}' value='{{list}}'>
+			{% endfor %}
 		</fieldset>
 		
 		<fieldset data-role="controlgroup2">

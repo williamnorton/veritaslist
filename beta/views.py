@@ -8,6 +8,9 @@ from time import localtime, strftime
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
+import xml.etree.ElementTree as ET
+from xml.etree.ElementTree import ParseError
+
 
 # Create your views here.
 
@@ -67,13 +70,24 @@ def detail(request, list_id):
 
 @login_required(login_url='/beta/login/')
 def listcreator(request):
-	return render(request, 'beta/listcreator.html',{'filler': "asdfd"})
+	try:
+		tree = ET.parse('master_checklist.xml')
+	except IOError:
+		return render(request, 'beta/listcreator.html',{'error_message': "IOError: master_checklist.xml not found"})	
+	try:
+		root = tree.getroot()
+		checklist_list = []
+		for checklist in root:
+			checklist_list.append(checklist.get('name'))
+	except ParseError:
+		return render(request, 'beta/listcreator.html',{'error_message': "ParseError: master_checklist.xml was not well-formed"})	
+		
+	return render(request, 'beta/listcreator.html',{'checklists': checklist_list})
 
+@login_required(login_url='/beta/login/')
 def handle_post(request):
-	"""
-	When the user makes a new list from listcreator, they go here
-	Redirect to the list after five seconds?
-	"""
+	#Handle POST data from listcreator. Create a new list in the database,
+	#using parsed data from the master_checklist.xml.
 	try:
 		confirmation = request.POST['confirmation']
 		checklist_type = request.POST['listtype']
@@ -81,12 +95,23 @@ def handle_post(request):
 		return render(request, 'beta/listcreator.html', {
 			'error_message': "Please select a checklist type, and confirm your decision"})
 	else:
-		"""Make a new list here"""	
-		listname=str(checklist_type)+": "+str(strftime("%a, %B %d, at %H:%M",localtime()))
-		newlist = List(name=listname, pub_date=timezone.now(), observers_list=request.user.username)
-		newlist.observers_list=request.user.username
-		newlist.save()
-		populate_list(newlist)
+		try:
+			tree = ET.parse('master_checklist.xml')
+		except IOError:
+			return render(request, 'beta/listcreator.html',{'error_message': "IOError: master_checklist.xml not found"})	
+		try:
+			root = tree.getroot()
+			for checklist in root:
+				if checklist.get('name')==checklist_type:
+					listname=str(checklist_type)+": "+str(strftime("%a, %B %d, at %H:%M",localtime()))
+					newlist = List(name=listname, pub_date=timezone.now(), observers_list=request.user.username)
+					newlist.observers_list=request.user.username
+					newlist.save()
+					populate_by_xml(newlist,checklist)
+					return HttpResponseRedirect(reverse('success'))
+
+		except ParseError:
+			return render(request, 'beta/listcreator.html',{'error_message': "ParseError: master_checklist.xml was not well-formed"})	
 		return HttpResponseRedirect(reverse('success'))
 
 def success(request):
@@ -98,6 +123,48 @@ def logout_view(request):
 
 def print_friendly(request, list_id):
 	return render(request, 'beta/print_friendly.html', {'vlist': List.objects.get(id=list_id)})
+
+
+
+
+
+def populate_by_xml(newlist, checklist):
+	#A nested loop that populates a list, taking a List model and
+	#an Element from our XML parser
+	for choicegroup in checklist:
+		subtext=''
+		if choicegroup.get('subtext'):
+			subtext=choicegroup.get('subtext')
+		g = newlist.choicegroup_set.create(group_text = choicegroup.get('name'),subtext = subtext)
+		g.save()
+		for choice in choicegroup:
+			details=''
+			if choice.get('details'):
+				details=choice.get('details')
+			g.choice_set.create(choice_text=choice.text, details=details)
+	newlist.save()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def populate_list(vlist):
 	if vlist.name.startswith("End"):
