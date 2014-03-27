@@ -8,7 +8,8 @@ from django.utils import timezone
 class List(models.Model):
 	name = models.CharField(max_length=200)
 	pub_date = models.DateTimeField('date published')
-	observers_list = models.CharField(max_length=60, default="")
+	observers_list = models.CharField(max_length=75, default="")
+	email_has_been_sent = models.BooleanField(default=False)
 
 	def __unicode__(self):
 		return self.name

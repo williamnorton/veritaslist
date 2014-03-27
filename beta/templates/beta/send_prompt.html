@@ -1,0 +1,50 @@
+<html>
+<head>
+	{% load staticfiles %}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static "beta/beta-theme.min.css" %}" />
+	<link rel="stylesheet" href="{% static "beta/jquery.mobile.icons.min.css" %}" />
+	<link rel="stylesheet" href="{% static "beta/jquery.mobile.structure-1.4.2.min.css" %}" />
+	<script src="{% static "beta/jquery-1.11.0.min.js" %}"></script>
+	<script src="{% static "beta/jquery.mobile-1.4.2.min.js" %}"></script>
+</head>
+<body>
+	<div data-role="header">
+		<h1>Submit Email?</h1>
+	</div>
+
+	<div data-role="main" class="ui-content">
+		{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+
+		<form method="post" action="{% url 'send_final' vlist.id %}">
+			{% csrf_token %}
+			<fieldset data-role="controlgroup"
+				<legend>Who do you want to submit to?</legend>
+				{% for address in addresses %}
+				<label for='{{forloop.counter}}'>{{address}}</label>
+				<input type = "checkbox" name="addresses" id="{{forloop.counter}}" value="{{address}}">
+				{% endfor %}
+			</fieldset>
+			<fieldset data-role="controlgroup"
+				<legend>Are you sure you want to submit this?</legend>
+				<label for="yes">Yes</label>
+				<input type = "checkbox" name="confirmation" id="yes" value="yes">
+			</fieldset>
+				
+			<input type="submit" 
+				data-inline="true" 
+				value='Send{% if already_sent %} Again{% endif %} '>
+		</form>
+
+	</div>
+
+
+	<div data-role="footer">
+		<a href="{% url 'detail' vlist.id %}" class="ui-btn ui-btn-inline ui-corner-all">Back</a>
+	</div>
+
+
+</body>
+</html>
+

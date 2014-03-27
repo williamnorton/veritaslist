@@ -3,10 +3,12 @@ from django.template import RequestContext, loader
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from beta.models import List, Choice
 from django.core.urlresolvers import reverse
+from django.core.mail import EmailMessage
 from django.utils import timezone
 from time import localtime, strftime
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+
 
 import xml.etree.cElementTree as ET
 from xml.etree.cElementTree import ParseError
@@ -124,6 +126,62 @@ def logout_view(request):
 def print_friendly(request, list_id):
 	return render(request, 'beta/print_friendly.html', {'vlist': List.objects.get(id=list_id)})
 
+def send_prompt(request, list_id):
+	#First, open and parse config.xml to retrieve a list, addresses
+
+	try:
+		tree = ET.parse('config.xml')
+	except IOError:
+		return render(request, 'beta/send_prompt.html',{'vlist': List.objects.get(id=list_id), 
+			'error_message': "IOError: config.xml not found",
+			'addresses':[]})
+	try:
+		root = tree.getroot()
+		addresses=[]
+		for email in root:
+			if email.tag=='email':
+				addresses.append(email.text)
+
+		if addresses==[]:
+			return render(request, 'beta/send_prompt.html',
+				{'error_message': "No email addresses found in config.xml",
+				'addresses':[]})	
+			
+	except ParseError:
+		return render(request, 'beta/send_prompt.html',{'error_message': "ParseError: master_checklist.xml was not well-formed",
+			'addresses':[]})
+
+	#Check to see if message has already been sent
+	vlist = get_object_or_404(List, pk=list_id)
+	if vlist.email_has_been_sent:
+		return render(request, 'beta/send_prompt.html', {'vlist': List.objects.get(id=list_id),
+			'error_message': "Message has already been sent. Send again?",
+			'addresses': addresses,
+			'already_sent':True})
+
+	#All is good, return a normal page
+	return render(request, 'beta/send_prompt.html',{'vlist': List.objects.get(id=list_id),
+		'addresses':addresses})
+
+def send_final(request, list_id):
+	try:
+		confirmation = request.POST['confirmation']
+		addresses = dict(request.POST)["addresses"]
+	except (KeyError):
+		return send_prompt(request, list_id)
+	
+	vlist = get_object_or_404(List, pk=list_id)
+	email = EmailMessage(vlist.name, 
+		'Attached: Checklist report from VERITAS', 
+		'Cyclone.List@gmail.com', 
+		addresses)
+	#email.attach_file()
+	email.send()
+	vlist.email_has_been_sent = True
+	vlist.save()
+	return send_prompt(request, list_id)
+
+	
 
 
 
@@ -143,23 +201,4 @@ def populate_by_xml(newlist, checklist):
 				details=choice.get('details')
 			g.choice_set.create(choice_text=choice.text, details=details)
 	newlist.save()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

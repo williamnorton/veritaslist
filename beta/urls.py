@@ -13,6 +13,8 @@ urlpatterns = patterns('',
 	url(r'^success/$', views.success, name='success'),
 	url(r'^logout/$', views.logout_view, name='logout'),
 	
+	url(r'^(?P<list_id>\d+)/send_prompt/$', views.send_prompt, name='send_prompt'),
+	url(r'^(?P<list_id>\d+)/send_final/$', views.send_final, name='send_final'),
 	url(r'^(?P<list_id>\d+)/print_friendly/$', views.print_friendly, name='print_friendly'),
 	url(r'^(?P<list_id>\d+)/$', views.detail, name='detail'),
 )
