@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from django.template import RequestContext, loader
+from django.template import RequestContext, loader, Context
+from django.template.loader import get_template
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from beta.models import List, Choice
 from django.core.urlresolvers import reverse
@@ -8,6 +9,7 @@ from django.utils import timezone
 from time import localtime, strftime
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django_xhtml2pdf.utils import pisa
 
 
 import xml.etree.cElementTree as ET
@@ -126,6 +128,7 @@ def logout_view(request):
 def print_friendly(request, list_id):
 	return render(request, 'beta/print_friendly.html', {'vlist': List.objects.get(id=list_id)})
 
+@login_required(login_url='/beta/login/')
 def send_prompt(request, list_id):
 	#First, open and parse config.xml to retrieve a list, addresses
 
@@ -163,6 +166,7 @@ def send_prompt(request, list_id):
 	return render(request, 'beta/send_prompt.html',{'vlist': List.objects.get(id=list_id),
 		'addresses':addresses})
 
+@login_required(login_url='/beta/login/')
 def send_final(request, list_id):
 	try:
 		confirmation = request.POST['confirmation']
@@ -172,9 +176,25 @@ def send_final(request, list_id):
 	
 	vlist = get_object_or_404(List, pk=list_id)
 	email = EmailMessage(vlist.name, 
-		'Attached: Checklist report from VERITAS', 
+		'Attached: Checklist report from VERITAS\n\nThis report submitted by: '+request.user.username, 
 		'Cyclone.List@gmail.com', 
 		addresses)
+
+	#Now we build the PDF
+	
+	#pdf_stringio = generate_pdf('beta/print_friendly.html', context=Context({'vlist':List.objects.get(id=list_id)}))
+
+
+	htmlfile = open('Night_Report.html', 'w')
+	template = get_template('beta/print_friendly.html')
+	context = Context({'vlist':vlist})
+	html = template.render(context)
+	htmlfile.write(html)
+	htmlfile.close()
+	email.attach_file('Night_Report.html')
+
+
+
 	#email.attach_file()
 	email.send()
 	vlist.email_has_been_sent = True
