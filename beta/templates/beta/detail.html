@@ -59,7 +59,8 @@
 
 
 <div data-role="footer">
-	<a href="{% url 'index' %}" class="ui-btn-left" data-icon="Home">Back</a>
+	<a href="{% url 'index' %}"  data-role="button" data-icon="Home">Back</a>
+	<a href="{% url 'send_prompt' vlist.id %}" data-role="button"  data-theme="b" data-icon="mail">Submit via Email</a>
 	<a href="{% url 'print_friendly' vlist.id %}" class="ui-btn-right" data-theme="b" data-icon="bullets">Print Friendly</a>
 </div>
 
