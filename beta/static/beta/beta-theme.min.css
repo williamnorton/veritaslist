@@ -13,6 +13,16 @@
 /* Globals */
 /* Font
 -----------------------------------------------------------------------------------------------------------*/
+
+/* CUSTOM HERE */
+.center-wrapper img {
+	vertical-align: middle;
+}
+
+/* END CUSTOM */
+
+
+
 html {
 	font-size: 100%;
 }

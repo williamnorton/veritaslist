@@ -13,6 +13,7 @@
 		<h1>Login Page</h1>
 	</div>
 
+	<center><h1>VERIList Checklist System</h1></center>
 	<div data-role="main" class="ui-content">
 		<form method="post" action="{% url 'index' %}">
 			{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -32,8 +33,8 @@
 	</div>
 
 
-	<div data-role="footer">
-		<a href="{% url 'index' %}" class="ui-btn ui-btn-inline ui-corner-all">Back</a>
+	<div data-role="footer" data-inline="true">
+		<img src="{% static "beta/ISU_LOGO.png" %}" height="40" />
 	</div>
 
 

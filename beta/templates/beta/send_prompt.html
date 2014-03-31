@@ -14,10 +14,12 @@
 	</div>
 
 	<div data-role="main" class="ui-content">
-		{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
+		{% if error_message %}
+				<h2>{{ error_message }}</h2>
+		{% endif %}
 
-		<form method="post" action="{% url 'send_final' vlist.id %}">
+		<form method="post" action="{% url 'index' %}">
 			{% csrf_token %}
 			<fieldset data-role="controlgroup"
 				<legend>Who do you want to submit to?</legend>
@@ -28,7 +30,7 @@
 			</fieldset>
 			<fieldset data-role="controlgroup"
 				<legend>Are you sure you want to submit this?</legend>
-				<label for="yes">Yes</label>
+				<label for="yes">Yes{% if error_message %}, re-submit this checklist.{% endif %}</label>
 				<input type = "checkbox" name="confirmation" id="yes" value="yes">
 			</fieldset>
 				
@@ -40,8 +42,9 @@
 	</div>
 
 
-	<div data-role="footer">
+	<div class="center-wrapper" data-role="footer">
 		<a href="{% url 'detail' vlist.id %}" class="ui-btn ui-btn-inline ui-corner-all">Back</a>
+		<img src="{% static "beta/ISU_LOGO.png" %}" height="40" />
 	</div>
 
 

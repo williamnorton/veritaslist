@@ -2,7 +2,7 @@
 <head>
 	{% load staticfiles %}
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="{% static "beta/beta-theme.css" %}" />
+	<link rel="stylesheet" href="{% static "beta/beta-theme.min.css" %}" />
 	<link rel="stylesheet" href="{% static "beta/jquery.mobile.icons.min.css" %}" />
 	<link rel="stylesheet" href="{% static "beta/jquery.mobile.structure-1.4.2.min.css" %}" />
 	<script src="{% static "beta/jquery-1.11.0.min.js" %}"></script>
@@ -34,7 +34,7 @@
 </div>
 
 <div data-role="controlgroup" class="ui content" style="text-align: left;">
-	<center><h2>Most Recent</h2></center>
+	<center><h2>VERIList Most Recent</h2></center>
 	{% if recent_lists %}
 		{% for list in recent_lists %}
 		<a href="{% url 'detail' list.id %}" class="ui-btn ui-corner-all">{{ list.name }}</a>
@@ -57,9 +57,10 @@
 	{% endif %}
 </div>
 
-<div data-role="footer">
+<div class="center-wrapper"  data-role="footer">
 	<a href="{% url 'index' %}" class="ui-btn ui-btn-inline ui-corner-all">Back</a>
 	<a href="{% url 'logout' %}" class="ui-btn ui-btn-inline ui-corner-all">Log out</a>
+	<img src="{% static "beta/ISU_LOGO.png" %}" height="40" />
 
 </div>
 </body>
