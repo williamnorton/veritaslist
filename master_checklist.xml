@@ -5,7 +5,7 @@
 			<choice>Announce on NORMAL radio channel that VERITAS as completed observations</choice>
 			<choice>On control03 send the telescopes to stow position</choice>
 			<choice>On control03 close the current monitor software</choice>
-			<choice>On control02 stop VDAQ: ssh to arrayctl.vts, ex. =E2=80=9CstopVDAQ.pl -1234=E2=80=9D</choice>
+			<choice>On control02 stop VDAQ: ssh to arrayctl.vts, ex. "stopVDAQ.pl -1234"</choice>
 			<choice>On control02 turn OFF all camera fans (if they were on): on arrayctl: stop_camera_fan -a</choice>
 		</choicegroup>
 		<choicegroup name='Telescope 1'>
@@ -14,7 +14,7 @@
 			<choice>Check that the camera fan is off (red light should be off)</choice>
 			<choice>Check that all 4 FADC crates are powered off (no lights on)</choice>
 			<choice>Switch off the chiller (DISABLE system and comp.) only if FADCs are off</choice>
-			<choice>Turn the trailer AC to 75 =C2=BAF</choice>
+			<choice>Turn the trailer AC to 75 °F</choice>
 			<choice>Close the internal door in the trailer</choice>
 		</choicegroup>
 		<choicegroup name='Telescope 2'>
@@ -23,7 +23,7 @@
 			<choice>Check that the camera fan is off (red light should be off)</choice>
 			<choice>Check that all 4 FADC crates are powered off (no lights on)</choice>
 			<choice>Switch off the chiller (DISABLE system and comp.) only if FADCs are off</choice>
-			<choice>Turn the trailer AC to 75 =C2=BAF</choice>
+			<choice>Turn the trailer AC to 75 °F</choice>
 			<choice>Close the internal door in the trailer</choice>
 		</choicegroup>
 		<choicegroup name='Telescope 3'>
@@ -32,7 +32,7 @@
 			<choice>Check that the camera fan is off (red light should be off)</choice>
 			<choice>Check that all 4 FADC crates are powered off (no lights on)</choice>
 			<choice>Switch off the chiller (DISABLE system and comp.) only if FADCs are off</choice>
-			<choice>Turn the trailer AC to 75 =C2=BAF</choice>
+			<choice>Turn the trailer AC to 75 °F</choice>
 			<choice>Close the internal door in the trailer</choice>
 		</choicegroup>
 		<choicegroup name='Telescope 4'>
@@ -41,7 +41,7 @@
 			<choice>Check that the camera fan is off (red light should be off)</choice>
 			<choice>Check that all 4 FADC crates are powered off (no lights on)</choice>
 			<choice>Switch off the chiller (DISABLE system and comp.) only if FADCs are off</choice>
-			<choice>Turn the trailer AC to 75 =C2=BAF</choice>
+			<choice>Turn the trailer AC to 75 °F</choice>
 			<choice>Close the internal door in the trailer</choice>
 		</choicegroup>
 		<choicegroup name='Telescopes and trailers double checked to reduce danger of erious damage (FADC meltdown, PMT exposure, etc).'>
@@ -56,8 +56,8 @@
 			<choice>Roll the shed back, reinsert the pins, close the door</choice>
 		</choicegroup>
 		<choicegroup name='At the computer hardware shed (old control trailer by T4)'>
-			<choice>Turn off the =E2=80=9CT0=E2=80=9D infrared radiometer (switch on power strip in staircase box)</choice>
-			<choice>Put the cap back on the =E2=80=9CT0=E2=80=9D infrared radiometer</choice>
+			<choice>Turn off the "T0" infrared radiometer (switch on power strip in staircase box)</choice>
+			<choice>Put the cap back on the "T0" infrared radiometer</choice>
 			<choice>Put the cap back on the Allsky Cloud Monitor at "T0"</choice>
 		</choicegroup>
 		<choicegroup name='Control Room'>
@@ -119,33 +119,37 @@
 			<choice>Key on the HV supplies (2 crates) to LOCAL</choice>
 			<choice>Check that the front and back FADC rack doors are latched closed</choice>
 			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Chiller'>Switch on the chiller - ENABLE system and ENABLE comp.</choice>
-			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Trailer_Thermostat'>Turn the trailer AC to 57 =C2=BAF</choice>
+			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Trailer_Thermostat'>Turn the trailer AC to 57 °F</choice>
 			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Telescope_Dehumidifiers'>Check that the dehumidifier is running"</choice>
-			<choice>Verify that the HV crates booted okay \n(display shows splash screen, +5V, +-12V, +48V LEDs lit)</choice>
+			<choice>Verify that the HV crates booted okay
+			(display shows splash screen, +5V, +-12V, +48V LEDs lit)</choice>
 		</choicegroup>
 		<choicegroup name='(T>90) Trailer 2' subtext='NO LATER THAN 90 MINUTES BEFORE STARTUP.'>
 			<choice>Key on the HV supplies (2 crates) to LOCAL</choice>
 			<choice>Check that the front and back FADC rack doors are latched closed</choice>
 			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Chiller'>Switch on the chiller - ENABLE system and ENABLE comp.</choice>
-			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Trailer_Thermostat'>Turn the trailer AC to 57 =C2=BAF</choice>
+			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Trailer_Thermostat'>Turn the trailer AC to 57 °F</choice>
 			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Telescope_Dehumidifiers'>Check that the dehumidifier is running"</choice>
-			<choice>Verify that the HV crates booted okay \n(display shows splash screen, +5V, +-12V, +48V LEDs lit)</choice>
+			<choice>Verify that the HV crates booted okay 
+			(display shows splash screen, +5V, +-12V, +48V LEDs lit)</choice>
 		</choicegroup>
 		<choicegroup name='(T>90) Trailer 3' subtext='NO LATER THAN 90 MINUTES BEFORE STARTUP.'>
 			<choice>Key on the HV supplies (2 crates) to LOCAL</choice>
 			<choice>Check that the front and back FADC rack doors are latched closed</choice>
 			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Chiller'>Switch on the chiller - ENABLE system and ENABLE comp.</choice>
-			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Trailer_Thermostat'>Turn the trailer AC to 57 =C2=BAF</choice>
+			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Trailer_Thermostat'>Turn the trailer AC to 57 °F</choice>
 			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Telescope_Dehumidifiers'>Check that the dehumidifier is running"</choice>
-			<choice>Verify that the HV crates booted okay \n(display shows splash screen, +5V, +-12V, +48V LEDs lit)</choice>
+			<choice>Verify that the HV crates booted okay 
+			(display shows splash screen, +5V, +-12V, +48V LEDs lit)</choice>
 		</choicegroup>
 		<choicegroup name='(T>90) Trailer 4' subtext='NO LATER THAN 90 MINUTES BEFORE STARTUP.'>
 			<choice>Key on the HV supplies (2 crates) to LOCAL</choice>
 			<choice>Check that the front and back FADC rack doors are latched closed</choice>
 			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Chiller'>Switch on the chiller - ENABLE system and ENABLE comp.</choice>
-			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Trailer_Thermostat'>Turn the trailer AC to 57 =C2=BAF</choice>
+			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Trailer_Thermostat'>Turn the trailer AC to 57 °F</choice>
 			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Telescope_Dehumidifiers'>Check that the dehumidifier is running"</choice>
-			<choice>Verify that the HV crates booted okay \n(display shows splash screen, +5V, +-12V, +48V LEDs lit)</choice>
+			<choice>Verify that the HV crates booted okay 
+			(display shows splash screen, +5V, +-12V, +48V LEDs lit)</choice>
 		</choicegroup>
 		<choicegroup name='(T>90) ATO Telescope' subtext='NO LATER THAN 90 MINUTES BEFORE STARTUP.'>
 			<choice>Roll up the garage door</choice>
@@ -167,40 +171,56 @@
 			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Camera_Fan'>Turn on all camera fans: on arrayctl: start_camera_fan -a</choice>
 			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Verifty_FADC_Settings'>Check that the CFD thresholds and Lookback Times are correct:
 			$ ssh vdaq@dacq.t1	
-			> vdbget_CFDSettings -t # (where #=3D1,2,3,4) threshold should be ~45mV,\
-			> vdbget_FADCChanSettings -t # (where #=3D1,2,3,4) lookback time should be 3000 samples</choice>
+			> vdbget_CFDSettings -t # (where #=1,2,3,4) threshold should be ~45mV,\
+			> vdbget_FADCChanSettings -t # (where #=1,2,3,4) lookback time should be 3000 samples</choice>
 			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Gamma-Ray_Burst_Alerts#The_GRB_Wizard_.28popup.29'>All observers should review the observing protocol for GRBs and the behavior of the GRB popup GUI, if they have not done so already this dark run. 
 			
 			Start the errorArchivingDemon in a new terminal, and leave it running all night.
 			$ ssh harvester; ./errorArchivingDemon.run.sh</choice>
 		</choicegroup>
 		<choicegroup name='(T>75) Control Room: Control02 Computer' subtext='NO LATER THAN 75 MINUTES BEFORE STARTUP.'>
-			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/FADC_Temperature_Monitor'>On control02 check that ReadTemps is running on all four telescopes by opening readtemps desktop, and if necessary clicking on RT Icon \n(or Log into arrayctl and launch FADC temperature monitors: ssh arrayctl, startReadTemps.pl -1234)</choice>
+			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/FADC_Temperature_Monitor'>On control02 check that ReadTemps is running on all four telescopes by opening readtemps desktop, and if necessary clicking on RT Icon 
+			(or Log into arrayctl and launch FADC temperature monitors: ssh arrayctl, startReadTemps.pl -1234)</choice>
 			<choice>On control02 launch the array monitor http://arraymon.vts (bookmarked as VTSSlowCtl)</choice>
-			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#startVDAQ.pl'>On control02 (right desktop) launch DACQ.\n(This turns on the FADCs, so Chillers must be on first)\nssh to arrayctl.vts, ex. =E2=80=9CstartVDAQ.pl -1234=E2=80=9D</choice>
-			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Gamma-Ray_Burst_Alerts#testing_the_alert_sound'>On control02 execute =E2=80=9Cgrb_play=E2=80=9D to test that the GRB alert sound is working</choice>
+			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#startVDAQ.pl'>On control02 (right desktop) launch DACQ.
+			(This turns on the FADCs, so Chillers must be on first)
+			ssh to arrayctl.vts, ex. "startVDAQ.pl -1234"</choice>
+			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Gamma-Ray_Burst_Alerts#testing_the_alert_sound'>On control02 execute "grb_play" to test that the GRB alert sound is working</choice>
 		</choicegroup>
 		<choicegroup name='(T>75) Control Room: Control03 Computer' subtext='NO LATER THAN 75 MINUTES BEFORE STARTUP.'>
-			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Serial_Tracking(PCS)#Array_interface'>On control03 launch Tracking: click Trk Icon\n(or ex. =E2=80=9CstartTRK.pl =E2=80=93a=E2=80=9D),\ncheck to see that telescopes are in Array Mode.</choice>
-			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_VAC_.28VERITAS_Array_Control.29'>On control03 launch VAC: (JAN 2014: ssh to arrayctl.vts, ex. =E2=80=9C VAC and=E2=80=9D)</choice>
+			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Serial_Tracking(PCS)#Array_interface'>On control03 launch Tracking: click Trk Icon
+			(or ex. "startTRK.pl -a"),
+			check to see that telescopes are in Array Mode.</choice>
+			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_VAC_.28VERITAS_Array_Control.29'>On control03 launch VAC: (JAN 2014: ssh to arrayctl.vts, ex. " VAC and")</choice>
 			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Checking_GRB_Alert_Software'>Check for recent GRB alerts on the GRB panel of array_tracking</choice>
 			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#High_Energy_Fermi_Photon'>Check the highest energy Fermi photon to determine if data is to be taken for the photon during the night</choice>
 			<choice>After a few minutes check VAC to see that event builders are connected</choice>
 			<choice>In VAC, select Observer->Start Night</choice>
-			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Checking_Harvester'>Check that VAC has connected to harvester, database and L3. L3 should be in the initialized state.\n<a href="https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_L3">Starting L3</a></choice>
-			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Disk_Space'>Check that sufficient disk space is free\nIn VAC: - Observer->Check Free Disk Space\nIn a terminal check UCLA raid space (>250GB):\n"$ ssh archiver@archive diskfree" (all one command)</choice>
+			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Checking_Harvester'>Check that VAC has connected to harvester, database and L3. L3 should be in the initialized state.
+			<a href="https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_L3">Starting L3</a></choice>
+			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_Disk_Space'>Check that sufficient disk space is free
+			In VAC: - Observer->Check Free Disk Space
+			In a terminal check UCLA raid space (>250GB):
+			"$ ssh archiver@archive diskfree" (all one command)</choice>
 		</choicegroup>
 		<choicegroup name='(T>75) Control Room: Control01 Computer' subtext='NO LATER THAN 75 MINUTES BEFORE STARTUP.'>
-			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Operating_the_infrared_radiometers'>On control01 launch the Infrared Radiometers: click on the FIR Icon\n(or ex. =E2=80=9CRUNFIR and=E2=80=9D); WAIT a minute for windows to appear.</choice>
+			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Operating_the_infrared_radiometers'>On control01 launch the Infrared Radiometers: click on the FIR Icon
+			(or ex. "RUNFIR and"); WAIT a minute for windows to appear.</choice>
 			<choice details='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Allsky_Cloud_Monitor'>>On control01 launch the All-Sky Cloud Monitor by clicking the All-Seeing Eye Icon 
 			(or execute, "vncviewer 10.0.0.143")</choice>
-			<choice>On control01 launch the lidar http://lidar.vts (bookmarked).\nRight click on tab, "Reload Every" -> "Enable" and choose appropriate time interval.</choice>
+			<choice>On control01 launch the lidar http://lidar.vts (bookmarked).
+			Right click on tab, "Reload Every" -> "Enable" and choose appropriate time interval.</choice>
 		</choicegroup>
 		<choicegroup name='(T>75) Control Room: L2 Trigger GUI' subtext='NO LATER THAN 75 MINUTES BEFORE STARTUP.'>
-			<choice>On control01 start the L2 trigger GUI by typing:\njava -jar /home/observer/L2Software/L2TriggerGUI.jar</choice>
+			<choice>On control01 start the L2 trigger GUI by typing:
+			java -jar /home/observer/L2Software/L2TriggerGUI.jar</choice>
 			<choice>Click the "Connect to CORBA Servers" button in the "Monitoring" tab.</choice>
-			<choice>In the "Configuration" tab of the GUI, check that all pixels in each telescope are either inverted and enabled or un-inverted and disabled.\nThis can be done by clicking the "Refresh All Pixels" button.\nAll pixels should be either green or black.\nThere should be NO blue pixels</choice>
-			<choice>Check that there are no stuck on pixels by clicking the "Check for triggered/stuck pixels" button in the "Configuration" tab. Any pixels that show up as red should be disabled and un-inverted.\nNote: If the FADCs are not powered on, all pixels will appear red.</choice>
+			<choice>In the "Configuration" tab of the GUI, check that all pixels in each telescope are either inverted and enabled or un-inverted and disabled.
+			This can be done by clicking the "Refresh All Pixels" button.
+			All pixels should be either green or black.
+			There should be NO blue pixels</choice>
+			<choice>Check that there are no stuck on pixels by clicking the "Check for triggered/stuck pixels" button in the "Configuration" tab. Any pixels that show up as red should be disabled and un-inverted.
+			Note: If the FADCs are not powered on, all pixels will appear red.</choice>
 			<choice>In the "Configuration" tab check that the detune is on(green color on the circular mark besides of on/off button), and the L2 Output width is set to 5.</choice>
 			<choice details='http://veritas.sao.arizona.edu/wiki/index.php/ANL/ISU_L2#Verifying_a_Timing_Alignment_Is_Loaded'>In the "Monitoring" tab, from the "All" view, click the "Read Timing Alignment Info" button.
 			
@@ -221,18 +241,22 @@
 			<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Current_Monitor'>Turn the preamps ON. Verify that they are delivering ~350W</choice>
 		</choicegroup>
 		<choicegroup name='(T>45) Control Room' subtext='NO LATER THAN 45 MINUTES BEFORE STARTUP.'>
-			<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Current_Monitor'>On control03 launch Current Monitor: click on the IMon Icon (or =E2=80=9CstartIMon.pl -1234=E2=80=9D)</choice>
-			<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_High_Voltage'>On control03 launch HV: click HV Icon\n(or execute =E2=80=9CstartHV.pl -1234a=E2=80=9D)</choice>
+			<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Current_Monitor'>On control03 launch Current Monitor: click on the IMon Icon (or "startIMon.pl -1234")</choice>
+			<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_High_Voltage'>On control03 launch HV: click HV Icon
+			(or execute "startHV.pl -1234a")</choice>
 			<choice>Turn the HV on (PMT->All On), current monitors should read ~0.</choice>
 			<choice>Take a 2-minute fake flasher run:</choice>
-			<choice>Start the flasher \n( $ ssh arrayctl ; $ flasher )</choice>
+			<choice>Start the flasher 
+			( $ ssh arrayctl ; $ flasher )</choice>
 			<choice>Start a standard flasher run in VAC and make sure all sub-systems are working fine</choice>
 			<choice>Monitor the data being taken with quicklook ssh harvester, then run "ql_monitor".</choice>
 			<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Overview_of_Observing'>If there is a Star Party or other activity outside the gate, read Overview of Observing. Talk to people/hand out flyers if necessary.</choice>
 		</choicegroup>
 		<choicegroup name='(T>20) Control Room' subtext='NO LATER THAN 20 MINUTES BEFORE STARTUP.'>
 			<choice>On control03 turn off HV</choice>
-			<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Pointing_Monitor#Using_the_Pointing_Monitors_during_gamma-ray_observations'>On control02 launch Pointing Monitor control: in VPM Control desktop click Vpm\n(or ssh in control04 and execute =E2=80=9Cvpmctl=E2=80=9D).\nPower on and start all monitors.</choice>
+			<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Pointing_Monitor#Using_the_Pointing_Monitors_during_gamma-ray_observations'>On control02 launch Pointing Monitor control: in VPM Control desktop click Vpm
+			(or ssh in control04 and execute "vpmctl").
+			Power on and start all monitors.</choice>
 			<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_the_ELOG'>Start the ELog in your favorite text editor.</choice>
 		</choicegroup>
 		<choicegroup name='(T>20) Telescope 1' subtext='NO LATER THAN 20 MINUTES BEFORE STARTUP.'>
@@ -242,7 +266,7 @@
 		<choice>Replace the remote control and switch off shutter power</choice>
 		<choice>Turn off all the lights in the trailer</choice>
 		<choice>Check that internal door is closed</choice>
-		<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Tracking'>Flip the RUN/SAFE switch on positioner to =E2=80=9CRUN=E2=80=9D</choice>
+		<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Tracking'>Flip the RUN/SAFE switch on positioner to "RUN"</choice>
 		</choicegroup>
 		<choicegroup name='(T>20) Telescope 2' subtext='NO LATER THAN 20 MINUTES BEFORE STARTUP.'>
 			<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_that_QI_is_Off'>Check that lights on QI power supplies are off (switch should be kept ON)</choice>
@@ -251,7 +275,7 @@
 			<choice>Replace the remote control and switch off shutter power</choice>
 			<choice>Turn off all the lights in the trailer</choice>
 			<choice>Check that internal door is closed</choice>
-			<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Tracking'>Flip the RUN/SAFE switch on positioner to =E2=80=9CRUN=E2=80=9D</choice>
+			<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Tracking'>Flip the RUN/SAFE switch on positioner to "RUN"</choice>
 		</choicegroup>
 		<choicegroup name='(T>20) Telescope 3' subtext='NO LATER THAN 20 MINUTES BEFORE STARTUP.'>
 			<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_that_QI_is_Off'>Check that lights on QI power supplies are off (switch should be kept ON)</choice>
@@ -260,7 +284,7 @@
 			<choice>Replace the remote control and switch off shutter power</choice>
 			<choice>Turn off all the lights in the trailer</choice>
 			<choice>Check that internal door is closed</choice>
-			<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Tracking'>Flip the RUN/SAFE switch on positioner to =E2=80=9CRUN=E2=80=9D</choice>
+			<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Tracking'>Flip the RUN/SAFE switch on positioner to "RUN"</choice>
 		</choicegroup>
 		<choicegroup name='(T>20) Telescope 4' subtext='NO LATER THAN 20 MINUTES BEFORE STARTUP.'>
 			<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Check_that_QI_is_Off'>Check that lights on QI power supplies are off (switch should be kept ON)</choice>
@@ -269,14 +293,14 @@
 			<choice>Replace the remote control and switch off shutter power</choice>
 			<choice>Turn off all the lights in the trailer</choice>
 			<choice>Check that internal door is closed</choice>
-			<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Tracking'>Flip the RUN/SAFE switch on positioner to =E2=80=9CRUN=E2=80=9D</choice>
+			<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Tracking'>Flip the RUN/SAFE switch on positioner to "RUN"</choice>
 		</choicegroup>
 		<choicegroup name='(T>20) Allsky cloud monitor' subtext='NO LATER THAN 20 MINUTES BEFORE STARTUP.'>
 			<choice details='http://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Starting_Allsky_Cloud_Monitor'>After sunset, open the cover for the allsky cloud monitor at T0</choice>
 		</choicegroup>
 		<choicegroup name='(T=0) Startup'>
 			<choice>Final check: outside - is the sun down / basecamp lights out?</choice>
-			<choice>Slew to zenith (85=C2=BA), then start slewing to the first source of the night. You want to be on target and tracking before astronomical twilight. Every minute of observing time counts.</choice>
+			<choice>Slew to zenith (85°), then start slewing to the first source of the night. You want to be on target and tracking before astronomical twilight. Every minute of observing time counts.</choice>
 			<choice>Check that the 2 main radios in the Control Room are respectively on the "Normal"  and "VERITAS" bands.</choice>
 			<choice>Make sure the volume are set appropriately (we turn it down during the day)</choice>
 			<choice>Announce over the radio that VERITAS is turning on.</choice>
