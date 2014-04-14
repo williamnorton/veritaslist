@@ -48,6 +48,15 @@
 				<td><div style="width: 100px">{{choice.last_user}}<br>{{choice.last_date}}</div></td>
 			</tr>
 			{% endfor %}
+			{% if group.note_set.all|length >= 1 %}
+			<tr><td>
+			<b>NOTES</b><br>
+			{% for note in group.note_set.all %}
+			
+			{{note.time}} - {{note.user}}: {{note.text}}<br>
+			{% endfor %}
+			</td></tr>
+			{% endif %}
 		</table>
 		<br>
 	{% endfor %}

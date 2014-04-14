@@ -19,7 +19,6 @@ class ChoiceGroup(models.Model):
 	parent = models.ForeignKey(List)
 	group_text = models.CharField(max_length = 150)
 	subtext = models.CharField(max_length=80, default=" ")
-	notes = models.CharField(max_length=300)
 	number_of_details = models.IntegerField(default=0)
 
 	def __unicode__(self):
@@ -54,3 +53,11 @@ class Detail(models.Model):
 	url = models.CharField(max_length=150, default='')
 	text = models.CharField(max_length=20, default='Details')
 
+class Note(models.Model):
+	parent = models.ForeignKey(ChoiceGroup)
+	text = models.CharField(max_length=256, default='')
+	user = models.CharField(max_length=20, default='Nobody')
+	time = models.CharField(max_length=15, default='')
+
+	def __unicode__(self):
+		return self.user + " " + self.text

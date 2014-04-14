@@ -421,8 +421,8 @@
 			<choice>This is line one.
 			This is line two.
 			This is line three.</choice>
-			<detail url='https://veritas.sao.arizona.edu/wiki/index.php/Operating_the_infrared_radiometers'>GOOGLE</detail>
-			<detail url='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Verifty_FADC_Settings'>GMAIL</detail>
+			<detail url='https://veritas.sao.arizona.edu/wiki/index.php/Operating_the_infrared_radiometers'>Operating the infrared radiometers</detail>
+			<detail url='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Verifty_FADC_Settings'>FADC Settings</detail>
 		</choicegroup>
 	</checklist>
 </root>

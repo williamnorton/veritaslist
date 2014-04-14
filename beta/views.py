@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.template import RequestContext, loader, Context
 from django.template.loader import get_template
 from django.http import HttpResponse, Http404, HttpResponseRedirect
-from beta.models import List, Choice
+from beta.models import List, Choice, ChoiceGroup, Note
 from django.core.urlresolvers import reverse
 from django.core.mail import EmailMessage
 from django.utils import timezone
@@ -51,9 +51,23 @@ def detail(request, list_id):
 	if not request.user.is_authenticated():
 		return render(request, 'beta/login.html', {'error_message': "Please log in"})
 	if request.method=="POST":
+
+		vlist = get_object_or_404(List, pk=list_id)
+		
+		if 'notetext' in request.POST:
+			note=request.POST['notetext']
+			user=request.user.username
+			time=str( strftime("%H:%M", localtime()))
+			cg = request.POST['choicegroupid']
+			cg = ChoiceGroup.objects.get(id=cg)
+			note_obj = cg.note_set.create(text=note, user=user, time=time)
+			note_obj.save()
+			return HttpResponseRedirect(reverse('detail', args=(vlist.id,)))
+		
+
+
 		choiceid = request.POST['choiceid']
 		choicechecked = request.POST['choicechecked']
-		vlist = get_object_or_404(List, pk=list_id)
 		if request.user.username not in vlist.observers_list:
 			vlist.observers_list = vlist.observers_list + ", "+request.user.username
 
@@ -67,7 +81,6 @@ def detail(request, list_id):
 		vchoice.save()
 
 		return HttpResponseRedirect(reverse('detail', args=(vlist.id,)))
-		#return render(request, 'beta/detail.html', {'vlist': vlist, 'error_message': "CHANGE MADE??"+choiceid+vchoice.isChecked})
 	else:
 		vlist = get_object_or_404(List, pk=list_id)
 		return render(request, 'beta/detail.html', {'vlist': vlist})

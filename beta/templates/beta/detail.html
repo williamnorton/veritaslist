@@ -52,6 +52,7 @@
 							name="{{ choice.id }}" 
 							id="{{ choice.id}}" 
 							value="{{ choice.id }}"
+							class="jscheckbox"
 							data-theme="a"
 							{% if choice.isChecked %}
 								checked
@@ -59,6 +60,23 @@
 						>
 					{% endfor %}
 					</fieldset>
+
+
+					<!- BEGIN NOTES ->
+
+					{% for note in group.note_set.all %}
+					<p>{{note.text}} - {{note.user}} - {{note.time}}</p>
+					{% endfor %}
+
+					<p id="confirm{{group.id}}"></p>
+
+					<form id="form{{group.id}}">
+						<input type="text" data-inline="true" id="text{{group.id}}" placeholder="Limit: 255 characters">
+						<input type="button" data-inline="true" onclick="noteSubmit({{group.id}})" value="Submit">
+					</form>
+
+
+					<!- END NOTES ->
 					<!- HERE ARE THE DETAILS ->
 					{% for detail in group.detail_set.all %}
 
@@ -101,7 +119,7 @@
 
 
 <script>
-	$('input').change(function() {
+	$('.jscheckbox').change(function() {
 		$.post("{% url 'detail' vlist.id %}", { 'username': '{{user.username}}', choiceid: this.id, choicechecked: this.checked, 'csrfmiddlewaretoken': '{{ csrf_token }}'});
 	});
 
@@ -111,6 +129,15 @@
 			$( "#popupInfo iframe" ).attr("src", url);
 		});
 	});
+
+
+
+	function noteSubmit(cg_id){
+		var note = document.getElementById("text"+cg_id).value;
+		$.post("{% url 'detail' vlist.id %}",{ 'username': '{{user.username}}', 'choicegroupid': cg_id, 'notetext': note , 'csrfmiddlewaretoken': '{{ csrf_token }}'});
+		alert("Note successfully submitted.\n\nYou will see it when you refresh.");
+		document.getElementById("confirm"+cg_id).innerHTML = "SUCCESS<br>"+note;
+	}
 </script>
 </body>
 </html>
