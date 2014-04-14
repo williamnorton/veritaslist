@@ -9,61 +9,93 @@
 	<link rel="stylesheet" href="{% static "beta/jquery.mobile.structure-1.4.2.min.css" %}" />
 	<script src="{% static "beta/jquery-1.11.0.min.js" %}"></script>
 	<script src="{% static "beta/jquery.mobile-1.4.2.min.js" %}"></script>
+
+
+<style>
+	#popupInfo-popup{
+		right: auto;
+		left: auto;
+		width: 80%;
+	}
+</style>
+
+
 </head>
 
 <body>
-<div data-role="page">
+<div id="page1" data-role="page">
 	<div data-role="header" data-position="fixed">
-	<h3 style="text-align:left; margin-left:10px;">{{vlist.name}}</h3>
-	<a href="javascript:history.go(0)" class="ui-btn-right" data-theme="b" data-icon="refresh">Refresh</a>
-</div>
-
-<div data-role="main" class="ui-content">
-	<div data-role="collapsible-set">
-
-		{% for group in vlist.choicegroup_set.all %}	
-
-			<div data-role="collapsible" 
-				data-collapsed="true" 
-				data-theme="{{ group.get_swatch }}"
-				> 
-
-				<h1>{{group.group_text}}</h1>
-				<fieldset data-role="controlgroup">
-				<h3>{{group.subtext}}</h3>
-				{% for choice in group.choice_set.all %}
-					{% autoescape off %}
-					<label for="{{ choice.id }}">{{ choice.choice_text | linebreaksbr }}
-						{% if choice.details|length > 5 %}
-							<br><i><a href="{{choice.details}}" target="_blank">(details)</a></i>
-						{% endif %}
-						<br><i>{{ choice.last_user }} - {{ choice.last_date }}</i>	
-					</label>
-					{% endautoescape %}
-					<input type="checkbox" 
-						name="{{ choice.id }}" 
-						id="{{ choice.id}}" 
-						value="{{ choice.id }}"
-						data-theme="a"
-						{% if choice.isChecked %}
-							checked
-						{% endif %}
-					>
-				{% endfor %}
-				</fieldset>
-			</div>
-		{% endfor %}
-
+		<h3 style="text-align:left; margin-left:10px;">{{vlist.name}}</h3>
+		<a href="javascript:history.go(0)" class="ui-btn-right" data-theme="b" data-icon="refresh">Refresh</a>
 	</div>
+
+	<div data-role="main" class="ui-content">
+		<div data-role="collapsible-set">
+
+			{% for group in vlist.choicegroup_set.all %}	
+
+				<div data-role="collapsible" 
+					data-collapsed="true" 
+					data-theme="{{ group.get_swatch }}"
+					> 
+
+					<h1>{{group.group_text}}</h1>
+					<fieldset data-role="controlgroup">
+					<h3>{{group.subtext}}</h3>
+					{% for choice in group.choice_set.all %}
+						{% autoescape off %}
+						<label for="{{ choice.id }}">{{ choice.choice_text | linebreaksbr }}
+							<br><i>{{ choice.last_user }} - {{ choice.last_date }}</i>	
+						</label>
+						{% endautoescape %}
+						<input type="checkbox" 
+							name="{{ choice.id }}" 
+							id="{{ choice.id}}" 
+							value="{{ choice.id }}"
+							data-theme="a"
+							{% if choice.isChecked %}
+								checked
+							{% endif %}
+						>
+					{% endfor %}
+					</fieldset>
+					<!- HERE ARE THE DETAILS ->
+					{% for detail in group.detail_set.all %}
+
+					<a class="popupInfoLink ui-btn ui-btn-inline ui-corner-all" 
+						href="#popupInfo" 
+						data-rel="popup" 
+						data-position-to="window" 
+						data-popupurl='{{detail.url}}'
+						>
+					{{detail.text}}
+					</a>
+					
+					<div data-role="popup" id="popupInfo" 
+						data-overlay-theme="a" data-theme="d" 
+						data-tolerance="15,15" class="ui-content"
+						>
+						<iframe src="" style="width: 100%; height: 400px;">x</iframe>
+					</div>
+
+					{% endfor %}
+					<!- END DETAILS ->
+				</div>
+			{% endfor %}
+
+		</div>
+	</div>
+
+
+	<div class="center-wrapper" data-role="footer">
+		<a href="{% url 'index' %}"  data-role="button" data-icon="Home">Back</a>
+		<a href="{% url 'send_prompt' vlist.id %}" data-role="button"  
+			data-theme="b" data-icon="mail">Submit via Email</a>
+		<a href="{% url 'print_friendly' vlist.id %}" data-role="button" 
+			class="ui-btn-right" data-theme="b" data-icon="bullets">Print Friendly</a>
+	</div>
+
 </div>
-
-
-<div class="center-wrapper" data-role="footer">
-	<a href="{% url 'index' %}"  data-role="button" data-icon="Home">Back</a>
-	<a href="{% url 'send_prompt' vlist.id %}" data-role="button"  data-theme="b" data-icon="mail">Submit via Email</a>
-	<a href="{% url 'print_friendly' vlist.id %}" data-role="button" class="ui-btn-right" data-theme="b" data-icon="bullets">Print Friendly</a>
-</div>
-
 
 
 
@@ -71,6 +103,13 @@
 <script>
 	$('input').change(function() {
 		$.post("{% url 'detail' vlist.id %}", { 'username': '{{user.username}}', choiceid: this.id, choicechecked: this.checked, 'csrfmiddlewaretoken': '{{ csrf_token }}'});
+	});
+
+	$( document ).on( "pageinit", function() {
+		$(".popupInfoLink").on("click", function(){
+			var url = $(this).data("popupurl");
+			$( "#popupInfo iframe" ).attr("src", url);
+		});
 	});
 </script>
 </body>

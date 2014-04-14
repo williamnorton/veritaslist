@@ -215,10 +215,14 @@ def populate_by_xml(newlist, checklist):
 			subtext=choicegroup.get('subtext')
 		g = newlist.choicegroup_set.create(group_text = choicegroup.get('name'),subtext = subtext)
 		g.save()
-		for choice in choicegroup:
-			details=''
-			if choice.get('details'):
-				details=choice.get('details')
-			g.choice_set.create(choice_text=choice.text, details=details)
+		for element in choicegroup:
+			
+			if element.tag == 'choice':
+				g.choice_set.create(choice_text=element.text)
+			if element.tag == 'detail':
+				g.detail_set.create(url=element.get('url'), text=element.text)
+				g.number_of_details = g.number_of_details + 1
+
 	newlist.save()
+
 

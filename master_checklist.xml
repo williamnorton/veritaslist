@@ -100,7 +100,7 @@
 			<choice>Check that the lights inside the positioner pedestal are off</choice>
 			<choice>Check that camera shutters are closed</choice>
 			<choice>Check that the safety bar on the platform is not in the way of the quad arms, remove if necessary</choice>
-			<detail url='https://veritas.sao.arizona.edu/wiki/index.php/Operating_the_infrared_radiometers'>Operating the infrared radiometers'</detail>
+			<detail url='https://veritas.sao.arizona.edu/wiki/index.php/Operating_the_infrared_radiometers'>Operating the infrared radiometers</detail>
 		</choicegroup>
 		<choicegroup name='(T>90) Telescope 3' subtext='NO LATER THAN 90 MINUTES BEFORE STARTUP.'>
 			<choice>Inspect around the base of each telescope for obstructions</choice>
@@ -110,7 +110,7 @@
 			<choice>Check that the lights inside the positioner pedestal are off</choice>
 			<choice>Check that camera shutters are closed</choice>
 			<choice>Check that the safety bar on the platform is not in the way of the quad arms, remove if necessary</choice>
-			<detail url='https://veritas.sao.arizona.edu/wiki/index.php/Operating_the_infrared_radiometers'>Operating the infrared radiometers'</detail>
+			<detail url='https://veritas.sao.arizona.edu/wiki/index.php/Operating_the_infrared_radiometers'>Operating the infrared radiometers</detail>
 
 		</choicegroup>
 		<choicegroup name='(T>90) Telescope 4' subtext='NO LATER THAN 90 MINUTES BEFORE STARTUP.'>
@@ -421,6 +421,8 @@
 			<choice>This is line one.
 			This is line two.
 			This is line three.</choice>
+			<detail url='https://veritas.sao.arizona.edu/wiki/index.php/Operating_the_infrared_radiometers'>GOOGLE</detail>
+			<detail url='https://veritas.sao.arizona.edu/wiki/index.php/Start_of_Night#Verifty_FADC_Settings'>GMAIL</detail>
 		</choicegroup>
 	</checklist>
 </root>
