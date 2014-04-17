@@ -50,6 +50,7 @@ def login_view(request):
 def detail(request, list_id):
 	if not request.user.is_authenticated():
 		return render(request, 'beta/login.html', {'error_message': "Please log in"})
+
 	if request.method=="POST":
 
 		vlist = get_object_or_404(List, pk=list_id)
