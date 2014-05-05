@@ -47,9 +47,10 @@ def login_view(request):
 		
 	return render(request, 'beta/login.html', RequestContext(request, {"blank": "nothing"}))
 
+@login_required(login_url='/beta/login/')
 def detail(request, list_id):
-	if not request.user.is_authenticated():
-		return render(request, 'beta/login.html', {'error_message': "Please log in"})
+	#if not request.user.is_authenticated():
+	#	return render(request, 'beta/login.html', {'error_message': "Please log in"})
 
 	if request.method=="POST":
 
@@ -73,7 +74,7 @@ def detail(request, list_id):
 			vlist.observers_list = vlist.observers_list + ", "+request.user.username
 
 		vchoice = Choice.objects.get(id=choiceid)
-		vchoice.isChecked = not vchoice.isChecked 
+		vchoice.isChecked = (choicechecked == 'true')
 		
 		last_change = str( strftime("%H:%M", localtime()))
 		vchoice.last_date=last_change
@@ -110,7 +111,23 @@ def handle_post(request):
 		confirmation = request.POST['confirmation']
 		checklist_type = request.POST['listtype']
 	except (KeyError):
+		try:
+			tree = ET.parse('master_checklist.xml')
+		except IOError:
+			return render(request, 'beta/listcreator.html',{'error_message': "IOError: master_checklist.xml not found"})	
+		try:
+			root = tree.getroot()
+			checklist_list = []
+			for checklist in root:
+				checklist_list.append(checklist.get('name'))
+		except ParseError:
+			return render(request, 'beta/listcreator.html',{'error_message': "ParseError: master_checklist.xml was not well-formed"})	
+		
+
+
+
 		return render(request, 'beta/listcreator.html', {
+			'checklists': checklist_list,
 			'error_message': "Please select a checklist type, and confirm your decision"})
 	else:
 		try:
@@ -213,7 +230,8 @@ def send_final(request, list_id):
 	email.send()
 	vlist.email_has_been_sent = True
 	vlist.save()
-	return send_prompt(request, list_id)
+	return render(request, 'beta/send_success.html', {'vlist':vlist})
+	#return send_prompt(request, list_id)
 
 	
 

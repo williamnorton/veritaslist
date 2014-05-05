@@ -1,0 +1,34 @@
+<html>
+<head>
+	{% load staticfiles %}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static "beta/beta-theme.min.css" %}" />
+	<link rel="stylesheet" href="{% static "beta/jquery.mobile.icons.min.css" %}" />
+	<link rel="stylesheet" href="{% static "beta/jquery.mobile.structure-1.4.2.min.css" %}" />
+	<script src="{% static "beta/jquery-1.11.0.min.js" %}"></script>
+	<script src="{% static "beta/jquery.mobile-1.4.2.min.js" %}"></script>
+</head>
+
+<body>
+
+<div data-role="header">
+	<h1>Email Successfully sent!</h1>
+</div>
+<br><br>
+<a href = "{% url 'detail' vlist.id %}" class='ui-btn ui-corner-all ui-btn-b' data-theme="b">Go back to your list</a>
+
+<br><br>
+<a href = "{% url 'index' %}" class='ui-btn ui-corner-all'>Go to Index</a>
+
+
+</body>
+
+
+<div data-role="footer">
+	<img src="{% static "beta/ISU_LOGO.png" %}" height="40" />
+</div>
+
+
+
+</html>
+
